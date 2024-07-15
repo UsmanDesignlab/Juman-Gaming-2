@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald&display=swap"
+      rel="stylesheet"
+    />
+    <title>Create Account</title>
+    <link rel="stylesheet" href="./assets/css/signup.css" />
+    <link rel="shortcut icon" href="Juman.png" type="image/x-icon" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/Web Favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <section id="main">
+      <div id="left">
+        <div id="rleft">
+          <div id="logo">
+            <h1>Sign Up</h1>
+          </div>
+          <div id="signin">
+            <form name="registration_form" id="registration_form" action="#">
+              <div id="One">
+                <p class="paragraph">Name</p>
+                <input
+                  type="text"
+                  placeholder="Enter Your Name"
+                  name="Name"
+                  id="name"
+                />
+              </div>
+
+              <div id="two">
+                <p class="paragraph">Email</p>
+                <input
+                  type="email"
+                  placeholder="Enter your Email"
+                  name="Email"
+                  id="email"
+                />
+              </div>
+
+              <div id="three">
+                <p class="paragraph">Password</p>
+                <input
+                  type="password"
+                  placeholder="Enter Your Password"
+                  name="Password"
+                  id="password"
+                />
+              </div>
+            </form>
+            <div id="create">
+              <button id="register">Create Account</button>
+              <p>
+                Already have an account?&nbsp;&nbsp;<a href="login.html"
+                  >Sign In</a
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div id="Right">
+        <di id="welcome">
+          <h1>Welcome</h1>
+          <p>
+            Bored? How about playing?<br />&nbsp;Games, they are with you
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; when you are alone.
+          </p>
+        </di>
+
+        <div class="box">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+    </section>
+  </body>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+    import {
+      getFirestore,
+      collection,
+      addDoc,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+    import {
+      getAuth,
+      createUserWithEmailAndPassword,
+      signInWithEmailAndPassword,
+      signOut,
+    } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+    const firebaseConfig = {
+  apiKey: "AIzaSyALEW2_t7bW2HJ6DOmvxcHAVm4LZUHFu9E",
+  authDomain: "juman-gaming-2b6fb.firebaseapp.com",
+  projectId: "juman-gaming-2b6fb",
+  storageBucket: "juman-gaming-2b6fb.appspot.com",
+  messagingSenderId: "926781560150",
+  appId: "1:926781560150:web:da3e251781862bcf5372f7",
+  measurementId: "G-P26RYK4LC4"
+};
+    // Initialize Firebase
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
+    const auth = getAuth();
+    const firestore = getFirestore(app);
+
+    // New Registration code
+    document.getElementById("register").addEventListener("click", function () {
+      var user_email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var user_name = document.getElementById("name").value;
+      //For new registration
+      createUserWithEmailAndPassword(auth, user_email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log(user);
+
+          // Create a new user document with actual data
+          const usersCollection = collection(firestore, "user_data"); // Access the collection
+          addDoc(usersCollection, {
+            name: user_name, // Use actual username
+            email: user_email
+            // Add other relevant fields here
+          })
+            .then(() => {
+              alert("Registration successful!");
+              window.location.href = "login.html";
+            })
+            .catch((error) => {
+              console.log("Error adding document:", error);
+              // Handle document creation errors (optional)
+            });
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.log(errorMessage);
+          // Handle authentication errors (optional)
+        });
+    });
+
+    //----- End
+
+    // //----- Login code start
+    // document.getElementById("Create").addEventListener("click", function() {
+    //   var email =  document.getElementById("two").value;
+    //   var password = document.getElementById("three").value;
+
+    //   signInWithEmailAndPassword(auth, email, password)
+    //   .then((userCredential) => {
+    //     // Signed in
+    //     const user = userCredential.user;
+    //     console.log(user);
+    //     alert(user.email+" Login successfully!!!");
+    //     document.getElementById('logout').style.display = 'block';
+    //     // ...
+    //   })
+    //   .catch((error) => {
+    //     const errorCode = error.code;
+    //     const errorMessage = error.message;
+    //     console.log(errorMessage);
+    //     alert(errorMessage);
+    //   });
+    // });
+    // //----- End
+
+    // //----- Logout code start
+    // document.getElementById("logout").addEventListener("click", function() {
+    //   signOut(auth).then(() => {
+    //     // Sign-out successful.
+    //     console.log('Sign-out successful.');
+    //     alert('Sign-out successful.');
+    //     document.getElementById('logout').style.display = 'none';
+    //   }).catch((error) => {
+    //     // An error happened.
+    //     console.log('An error happened.');
+    //   });
+    // });
+    // //----- End
+  </script>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>TIC-TAC-TOE</title>
+    <!-- Boxions CDN link -->
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/all.css" />
+    <link rel="stylesheet" href="./assets/css/search.css">
+    <link rel="stylesheet" href="./assets/css/tic-tac-toe.css">
+    <link rel="shortcut icon" href="./assets/images/Web Favicon.png" type="image/x-icon">
+  </head>
+   <style>
+    
+   </style>
+  <body>
+    <div class="sidebar">
+      <div class="logo_content">
+        <div class="logo">
+          <div class="logo_name">Juman Gaming</div>
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <div class="nav-list">
+        <ul class="main-nav">
+          <li>
+            <i class="bx bx-search"></i>
+            <input id="sidebar_search" type="email" placeholder="search..." />
+            <span class="tooltip">Search</span>
+          </li>
+          <li>
+            <a href="dashboard.html">
+              <i class="bx bx-grid-alt"></i>
+              <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+          </li>
+          <li class="music">
+            <a href="#">
+              <i class="bx bx-volume-low" id="volume_icon"></i>
+              <span class="links_name">Music</span>
+            </a>
+            <span class="tooltip">Music</span>
+            <audio id="myAudio">
+              <source
+                src="./assets/audio/sb_indreams(chosic.com).mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </li>
+          <li>
+            <div class="co">
+              <h3>Color Picker</h3>
+            <input type="color" id="colorPicker" />
+            </div>
+          </li>
+          <div id="search_results"></div>
+        </ul>
+        <div class="profile_content">
+          <div class="profile">
+            <div class="profile_details" id="profile_details">
+              <img src="./assets/images/profile-img.png" alt="" />
+              <div class="name_job">
+                <div class="name">LogOut</div>
+              </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard">
+      <div id="search">
+        <h1 data-text="TIC-TAC-TOE" id="center">TIC-TAC-TOE</h1>
+        <input type="checkbox" class="checkbox" />
+      </div>
+      <div class="conl">
+        <div id="stopwatchBox">
+            <div id="stopwatch">00:00:00</div>
+            <div id="stopwatchMessage">Stopwatch running...</div>
+        </div>
+      <div class="tictac">
+        <div class="toe">
+       <table id="scoreboard" align="center">
+        <tr>
+            <td><h4>Player 1</h4></td>
+            <td width="30"> &nbsp; </td>
+            <td><h4>Player 2</h4></td>
+        </tr>
+        <tr>
+            <td class="score" id="player1">
+                0
+            </td>
+            <td> &nbsp; </td>
+            <td class="score" id="player2">
+                0
+            </td>
+        </tr>
+    </table>
+       </div>
+       <div id="placeholder"></div>
+      <span>
+    <button class="restart" onclick="restart()">
+        Reset
+    </button>
+    &nbsp; &nbsp;
+    <select onchange="restart(this.value)">
+        <option value="2">
+            2 X 2
+        </option>
+        <option value="3" selected="">
+            3 X 3
+        </option>
+        <option value="4">
+            4 X 4
+        </option>
+        <option value="5">
+            5 X 5
+        </option>
+        <!-- <option value="6">
+          6 X 6
+      </option> -->
+    </select>
+      </span>
+    </div>      
+</div>
+    <script src="./assets/js/search.js"></script>
+    <script src="./assets/js/tic-tac-toe.js"></script>
+    <script src="./assets/js/volume.js"></script>
+    <script src="./assets/js/notification.js"></script>
+    <script>
+      let btn = document.querySelector("#btn");
+      let sidebar = document.querySelector(".sidebar");
+      let searchBtn = document.querySelector(".bx-search");
+
+      btn.onclick = function () {
+        sidebar.classList.toggle("active");
+      };
+      searchBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+      };
+    </script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      import {
+        getAuth,
+        signOut,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+      const firebaseConfig = {
+  apiKey: "AIzaSyALEW2_t7bW2HJ6DOmvxcHAVm4LZUHFu9E",
+  authDomain: "juman-gaming-2b6fb.firebaseapp.com",
+  projectId: "juman-gaming-2b6fb",
+  storageBucket: "juman-gaming-2b6fb.appspot.com",
+  messagingSenderId: "926781560150",
+  appId: "1:926781560150:web:da3e251781862bcf5372f7",
+  measurementId: "G-P26RYK4LC4"
+};
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+
+      function clearAuthenticationState() {
+        // Clear any stored authentication tokens or session data
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Logout button event listener
+        document
+          .getElementById("log_out")
+          .addEventListener("click", function () {
+            signOut(auth)
+              .then(() => {
+                // Sign-out successful
+                console.log("Sign-out successful.");
+                alert("Logout successful.");
+                clearAuthenticationState(); // Clear authentication state
+                window.location.href = "login.html"; // Redirect to login page after logout
+              })
+              .catch((error) => {
+                // An error happened
+                console.error("Sign-out error:", error);
+                alert("Logout failed. Please try again.");
+              });
+          });
+
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+          if (!user) {
+            window.location.href = "login.html";
+          } else {
+            document.getElementById("logout"); // Show logout button
+          }
+        });
+
+        // Add an event listener to the profile details background
+        const profileDetails = document.getElementById("profile_details");
+        const logoutButton = document.getElementById("log_out");
+
+        profileDetails.addEventListener("click", function (event) {
+          // Check if the clicked element is not the logout button
+          if (event.target !== logoutButton) {
+            // Perform your desired action here (e.g., do not logout)
+            console.log(
+              "Clicked on profile details background. Not logging out."
+            );
+          }
+        });
+      });
+
+      // Function to display user data
+      function displayUserData(user) {
+        document.getElementById("user_name").innerText =
+          "Name: " + user.displayName;
+        document.getElementById("user_age").innerText = "Age: " + user.age; // Assuming age is available in user data
+        document.getElementById("user_email").innerText =
+          "Email: " + user.email;
+      }
+      // Add an event listener for the "User" option in the sidebar
+      document
+        .querySelector(".links_name#User")
+        .addEventListener("click", function () {
+          const user = auth.currentUser; // Get the current user
+          if (user) {
+            // User is signed in, display user data
+            displayUserData(user);
+            document.getElementById("user_data_container").style.display =
+              "block"; // Show the user data container
+
+            // Automatically remove user data after 5 seconds
+            setTimeout(function () {
+              document.getElementById("user_data_container").style.display =
+                "none";
+            }, 5000); // Adjust the timeout value as needed
+          } else {
+            // No user signed in, redirect to login page
+            window.location.href = "login.html";
+          }
+        });
+      document.querySelector(".user").addEventListener("click", function () {
+        const user = auth.currentUser; // Get the current user
+        if (user) {
+          // User is signed in, display user data
+          displayUserData(user);
+          document.getElementById("user_data_container").style.display =
+            "block"; // Show the user data container
+
+          // Automatically remove user data after 5 seconds
+          setTimeout(function () {
+            document.getElementById("user_data_container").style.display =
+              "none";
+          }, 5000); // Adjust the timeout value as needed
+        } else {
+          // No user signed in, redirect to login page
+          window.location.href = "login.html";
+        }
+      });
+    </script>
+  </body>
+</html>

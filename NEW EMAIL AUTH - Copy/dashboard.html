@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>Dashboard</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/css/my-style.css" />
+    <link
+      rel="shortcut icon"
+      href="./assets/images/Web Favicon.png"
+      type="image/x-icon"
+    />
+  </head>
+  <body>
+    <div class="sidebar">
+      <div class="logo_content">
+        <div class="logo">
+          <div class="logo_name">Juman Gaming</div>
+        </div>
+        <i class="bx bx-menu" id="btn"></i>
+      </div>
+      <div class="nav-list">
+        <ul class="main-nav">
+          <li>
+            <i class="bx bx-search"></i>
+            <input id="sidebar_search" type="email" placeholder="search..." />
+            <span class="tooltip">Search</span>
+          </li>
+          <li>
+            <a href="#">
+              <i class="bx bx-grid-alt"></i>
+              <span class="links_name">Home</span>
+            </a>
+            <span class="tooltip">Home</span>
+          </li>
+          <li class="user">
+            <a href="#">
+              <i class="bx bx-user"></i>
+              <span class="links_name" id="User">User</span>
+            </a>
+            <span class="tooltip">User</span>
+          </li>
+          <li class="music">
+            <a href="#">
+              <i class="bx bx-volume-low" id="volume_icon"></i>
+              <span class="links_name">Music</span>
+            </a>
+            <span class="tooltip">Music</span>
+            <audio id="myAudio">
+              <source
+                src="./assets/audio/sb_indreams(chosic.com).mp3"
+                type="audio/mpeg"
+              />
+              Your browser does not support the audio element.
+            </audio>
+          </li>
+          <li>
+            <a href="#" id="colorLink">
+                <i class='bx bx-palette'></i>
+                <span class="links_name">WHO</span>
+            </a>
+            <span class="tooltip">Color Scheme</span>
+        </li>
+        <li>
+          <div class="co">
+            <h3>Color Picker</h3>
+          <input type="color" id="colorPicker" />
+          </div>
+        </li>
+          <div id="search_results"></div>
+        </ul>
+        <div class="profile_content log">
+          <div class="profile">
+            <div class="profile_details" id="profile_details">
+              <img src="./assets/images/profile-img.png" alt="" />
+              <div class="name_job">
+                <div class="name">LogOut</div>
+              </div>
+            </div>
+            <i class="bx bx-log-out" id="log_out"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dashboard">
+      <div id="search">
+        <h1 data-text="Dashboard" id="center">Dashboard</h1>
+        <input type="checkbox" class="checkbox" />
+    </div>
+      <div class="games web-games">
+        <div class="subject">
+          <h1>FREE GAMES</h1>
+        </div>
+        <div class="boxes">
+          <div class="box one">
+            <div class="game-img"></div>
+            <a href="./tic-tac-toe.html"><h3>Tic Tac Toe</h3></a>
+          </div>
+          <div class="box two">
+            <div class="game-img"></div>
+            <a href="./word.html"><h3>Word Guessing</h3></a>
+          </div>
+          <div class="box three">
+            <div class="game-img"></div>
+            <a href="./number.html"><h3>Number Guessing</h3></a>
+          </div>
+          <div class="box four">
+            <div class="game-img"></div>
+            <a href="./rock.html"><h3>Rock Paper Scissor</h3></a>
+          </div>
+          <div class="box five">
+            <div class="game-img"></div>
+            <a href="./scramble.html"><h3>Scramble Game</h3></a>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="slide">
+          <div class="item item-1">
+            <div class="content">
+              <div class="name">Tic Tac Toe</div>
+              <div class="des">
+                Play the classic Tic-Tac-Toe game (also called Noughts and
+                Crosses) for free online with one or two players.
+              </div>
+              <a href="./tic-tac-toe.html">Play Game</a>
+            </div>
+          </div>
+          <div class="item item-2">
+            <div class="content">
+              <div class="name">Rock Paper Scissor Game</div>
+              <div class="des">
+                Each player throws their choices out on the count of three by
+                calling out “rock, paper, scissors.”.
+              </div>
+              <a href="./rock.html">Play Game</a>
+            </div>
+          </div>
+          <div class="item item-3">
+            <div class="content">
+              <div class="name">Scramble-Game</div>
+              <div class="des">
+                In the game, the letters that can make a meaningful word are
+                scrambled or mixed up together in a random fashion when a person
+                plays word scramble game.
+              </div>
+              <a href="./scramble.html">Play Game</a>
+            </div>
+          </div>
+          <div class="item item-4">
+            <div class="content">
+              <div class="name">Word Guessing Game</div>
+              <div class="des">
+                Guess the secret word. Each guess must be a word.
+              </div>
+              <a href="./word.html">Play Game</a>
+            </div>
+          </div>
+          <div class="item item-5">
+            <div class="content">
+              <div class="name">Number Guessing Game</div>
+              <div class="des">
+                In this free math game for kids, players have just 10 guesses to
+                discover a secret number.
+              </div>
+              <a href="./number.html">Play Game</a>
+            </div>
+          </div>
+        </div>
+        <div class="button">
+          <button class="prev"><i class="fa-solid fa-arrow-left"></i></button>
+          <button class="next"><i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="games online-games">
+        <div class="subject">
+          <h1>ONLINE GAMES</h1>
+        </div>
+        <div class="boxes">
+          <div class="box one">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/subway-surfers"
+              ><h3>Subway Surfers</h3></a
+            >
+          </div>
+          <div class="box two">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/moto-x3m"><h3>Moto-x3m</h3></a>
+          </div>
+          <div class="box three">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/rocket-soccer-derby"
+              ><h3>Rocket-soccer-derby</h3></a
+            >
+          </div>
+          <div class="box four">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/tennis-masters"
+              ><h3>Tennis-masters</h3></a
+            >
+          </div>
+        </div>
+        <div class="boxes">
+          <div class="box five">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/sword-masters"
+              ><h3>Sword-masters</h3></a
+            >
+          </div>
+          <div class="box six">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/tribals-io"><h3>Tribals-io</h3></a>
+          </div>
+          <div class="box seven">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/sushi-party-io"
+              ><h3>Sushi-party-io</h3></a
+            >
+          </div>
+          <div class="box eight">
+            <div class="game-img"></div>
+            <a href="https://poki.com/en/g/narrow-one"><h3>Narrow-one</h3></a>
+          </div>
+        </div>
+      </div>
+      <div id="user_data_container" style="display: none">
+        <div id="user_name"></div>
+        <div id="user_email"></div>
+      </div>
+    </div>
+    <div id="colorBlindDescription" class="color-blind-description"></div>
+
+        <script src="script.js"></script>
+    <script src="./assets/js/index.js"></script>
+    <script src="./assets/js/search.js"></script>
+    <script>
+      let btn = document.querySelector("#btn");
+      let sidebar = document.querySelector(".sidebar");
+      let searchBtn = document.querySelector(".bx-search");
+
+      btn.onclick = function () {
+        sidebar.classList.toggle("active");
+      };
+      searchBtn.onclick = function () {
+        sidebar.classList.toggle("active");
+      };
+    </script>
+    <script type="module">
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        query,
+        where,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+      import {
+        getAuth,
+        createUserWithEmailAndPassword,
+        signInWithEmailAndPassword,
+        signOut,
+        onAuthStateChanged,
+      } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+      const firebaseConfig = {
+  apiKey: "AIzaSyALEW2_t7bW2HJ6DOmvxcHAVm4LZUHFu9E",
+  authDomain: "juman-gaming-2b6fb.firebaseapp.com",
+  projectId: "juman-gaming-2b6fb",
+  storageBucket: "juman-gaming-2b6fb.appspot.com",
+  messagingSenderId: "926781560150",
+  appId: "1:926781560150:web:da3e251781862bcf5372f7",
+  measurementId: "G-P26RYK4LC4"
+};
+
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+      const auth = getAuth();
+      const firestore = getFirestore(app);
+
+      function clearAuthenticationState() {
+        // Clear any stored authentication tokens or session data
+        localStorage.clear();
+        sessionStorage.clear();
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        // Logout button event listener
+        document
+          .getElementById("log_out")
+          .addEventListener("click", function () {
+            signOut(auth)
+              .then(() => {
+                // Sign-out successful
+                console.log("Sign-out successful.");
+                alert("Logout successful.");
+                clearAuthenticationState(); // Clear authentication state
+                window.location.href = "login.html"; // Redirect to login page after logout
+              })
+              .catch((error) => {
+                // An error happened
+                console.error("Sign-out error:", error);
+                alert("Logout failed. Please try again.");
+              });
+          });
+
+        // Check authentication state on page load
+        onAuthStateChanged(auth, (user) => {
+          if (!user) {
+            window.location.href = "login.html";
+          } else {
+            document.getElementById("logout"); // Show logout button
+          }
+        });
+
+        // Add an event listener to the profile details background
+        const profileDetails = document.getElementById("profile_details");
+        const logoutButton = document.getElementById("log_out");
+
+        profileDetails.addEventListener("click", function (event) {
+          // Check if the clicked element is not the logout button
+          if (event.target !== logoutButton) {
+            // Perform your desired action here (e.g., do not logout)
+            console.log(
+              "Clicked on profile details background. Not logging out."
+            );
+          }
+        });
+      });
+
+      // Function to display user data
+      function displayUserData(user) {
+        const userEmail = user.email;
+        const usersCollection = collection(firestore, "user_data");
+        const q = query(usersCollection, where("email", "==", userEmail));
+
+        getDocs(q)
+          .then((querySnapshot) => {
+            const doc = querySnapshot.docs[0]; // Get the first document
+            const name = doc.data().name;
+
+            console.log("Name:", name);
+            document.getElementById("user_name").innerText = "Name: " + name;
+            document.getElementById("user_email").innerText =
+              "Email: " + userEmail;
+            // You can use the name variable for further processing
+          })
+          .catch((error) => {
+            console.error("Error getting documents:", error);
+          });
+      }
+      // Add an event listener for the "User" option in the sidebar
+      // document
+      //   .querySelector(".links_name#User")
+      //   .addEventListener("click", function () {
+      //     const user = auth.currentUser; // Get the current user
+      //     if (user) {
+      //       // User is signed in, display user data
+      //       displayUserData(user);
+      //       document.getElementById("user_data_container").style.display =
+      //         "block"; // Show the user data container
+
+      //       // Automatically remove user data after 5 seconds
+      //       setTimeout(function () {
+      //         document.getElementById("user_data_container").style.display =
+      //           "none";
+      //       }, 5000); // Adjust the timeout value as needed
+      //     } else {
+      //       // No user signed in, redirect to login page
+      //       window.location.href = "login.html";
+      //     }
+      //   });
+      document.querySelector(".user").addEventListener("click", function () {
+        const user = auth.currentUser; // Get the current user
+        if (user) {
+          // User is signed in, display user data
+          displayUserData(user);
+          document.getElementById("user_data_container").style.display =
+            "block"; // Show the user data container
+
+          // Automatically remove user data after 5 seconds
+          setTimeout(function () {
+            document.getElementById("user_data_container").style.display =
+              "none";
+          }, 5000); // Adjust the timeout value as needed
+        } else {
+          // No user signed in, redirect to login page
+          window.location.href = "login.html";
+        }
+      });
+      document.addEventListener("DOMContentLoaded", function () {
+    const colorLink = document.getElementById('colorLink'); // Selecting the "Color" link
+    const colorBlindDescription = document.getElementById('colorBlindDescription');
+
+    colorLink.addEventListener('click', function (event) {
+        event.preventDefault(); // Prevent the default link behavior (optional)
+
+        // Display the color-blind description
+        colorBlindDescription.innerHTML = `
+            <p><strong>Color-blindness affects how individuals perceive colors.</strong></p>
+            <p>To accommodate users with color-blindness, it's essential to choose color combinations that are easily distinguishable by most types of color-blindness.</p>
+            <p><strong>Recommended Color Combinations:</strong></p>
+            <ul>
+                <li>Contrasting Colors: Use high-contrast combinations like black and white or combinations from different ends of the color spectrum (e.g., blue and yellow).</li>
+                <li>Avoid Red-Green Confusion: Red and green are often confused by individuals with red-green color blindness. Use alternatives like blue and orange instead.</li>
+                <li>Accessible Color Palettes: Utilize tools and resources that provide accessible color palettes designed to be distinguishable for color-blind users.</li>
+                <li>Color Filters and Simulations: Test your color choices using color-blindness simulation tools to ensure readability and usability.</li>
+                <li>Color Names and Symbols: Use color names and symbols in addition to color coding to convey information.</li>
+            </ul>
+        `;
+
+        colorBlindDescription.style.display = 'block'; // Display the description
+
+        // Hide the description after 5 seconds
+        setTimeout(function () {
+            colorBlindDescription.style.display = 'none';
+        }, 5000);
+    });
+});
+
+// Function to check if the viewport width is within mobile range
+function checkMobileViewport() {
+  // Typical mobile screen width threshold
+  const mobileScreenWidth = 768;
+  
+  // Check if current viewport width is less than mobile screen width
+  if (window.innerWidth < mobileScreenWidth) {
+    // Display alert message
+    alert('This website is not optimized for mobile screens. It is intended for desktop use.');
+  }
+}
+
+// Event listener for window resize
+window.addEventListener('resize', function() {
+  // Call function to check viewport width on resize
+  checkMobileViewport();
+});
+
+// Initial check on page load
+checkMobileViewport();
+
+    </script>
+  </body>
+</html>

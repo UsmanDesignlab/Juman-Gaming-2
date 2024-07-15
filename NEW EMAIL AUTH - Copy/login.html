@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&family=Oswald&display=swap" rel="stylesheet" />
+  <title>Sign In</title>
+  <link rel="stylesheet" href="./assets/css/login.css" />
+  <link rel="shortcut icon" href="./assets/images/Web Favicon.png" type="image/x-icon">
+</head>
+<body>
+  <section id="main">
+    <div id="Left">
+      <div id="rleft">
+        <div id="logo">
+          <h1 id="one">Juman <br />&nbsp;&nbsp;&nbsp;Gaming</h1>
+          <p>Sign in to your Account</p>
+        </div>
+
+        <div id="login">
+          <form name="registration_form" id="registration_form" action="#">
+            <div id="email">
+              <input type="text" name="login_email" id="login_email" class="form-control" placeholder="Enter your email">
+            </div>
+            <div id="password">
+              <input type="password" name="login_password" id="login_password" class="form-control" placeholder="Enter your password">
+            </div>
+        </div>
+      </form>
+
+      <div id="me">
+         <div class="Remember"><p></p>
+        </div>
+         <div class="for">
+          <a href="#" id="forgot_password_link">Forget Password</a>
+         </div>
+      </div>
+      <div id="signin">
+        <button id="signin_button">Sign IN</button>
+      </div>
+      <div id="logout" style="display:none;">
+        <button id="logout_button">Logout</button>
+      </div>
+
+      <div id="delete">
+        <p>
+          Don't have an account? <a href="signup.html">Create Account</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div id="Right">
+    <div class="box">
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+</body>
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-analytics.js";
+  import { getAuth, signInWithEmailAndPassword, sendPasswordResetEmail, signOut } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js";
+
+  const firebaseConfig = {
+  apiKey: "AIzaSyALEW2_t7bW2HJ6DOmvxcHAVm4LZUHFu9E",
+  authDomain: "juman-gaming-2b6fb.firebaseapp.com",
+  projectId: "juman-gaming-2b6fb",
+  storageBucket: "juman-gaming-2b6fb.appspot.com",
+  messagingSenderId: "926781560150",
+  appId: "1:926781560150:web:da3e251781862bcf5372f7",
+  measurementId: "G-P26RYK4LC4"
+};
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+  const auth = getAuth(); // Get the authentication object
+
+  document.getElementById("signin_button").addEventListener("click", function() {
+    var email =  document.getElementById("login_email").value;
+    var password = document.getElementById("login_password").value;
+
+    signInWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      console.log(user);
+      alert(user.email+" Login successfully!!!");
+      document.getElementById('logout').style.display = 'none';
+      // Redirect to dashboard after successful sign-in
+      window.location.href="dashboard.html";
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      alert(errorCode);
+      console.log(errorMessage);
+    });		  		  
+  });
+
+  // // Logout code
+  // document.getElementById("logout_button").addEventListener("click", function() {
+  //   signOut(auth).then(() => {
+  //     // Sign-out successful.
+  //     console.log('Sign-out successful.');
+  //     alert('Logout successful.');
+  //     document.getElementById('logout').style.display = 'none';
+  //   }).catch((error) => {
+  //     // An error happened.
+  //     console.log('An error happened.');
+  //     alert('Logout failed. Please try again.');
+  //   });
+  // });
+
+  // Forgot password functionality
+  document.getElementById("forgot_password_link").addEventListener("click", function(event) {
+    event.preventDefault(); // Prevent default action of the link
+
+    // Prompt user to enter their email
+    var email = prompt("Please enter your email to reset your password:");
+
+    if (email) {
+      sendPasswordResetEmail(auth, email)
+      .then(() => {
+        alert('Password reset email sent. Please check your inbox.');
+      })
+      .catch((error) => {
+        console.error(error);
+        alert('Error sending reset email. Please try again.');
+      });
+    }
+  });
+</script>
+</html>
+
